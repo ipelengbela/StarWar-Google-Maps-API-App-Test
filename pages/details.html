@@ -1,0 +1,813 @@
+<div class="panel panel-default panel-details animated fadeIn" ng-hide="loading">
+    
+    <!-- Panel Heading -->
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-1 zero-padding text-center panel-head-back" ng-click="back()">
+                <i class="ion-android-arrow-back"></i>
+            </div>
+            <div class="col-xs-9 panel-head-title">
+                <h3 class="panel-title">{{title}}</h3>
+            </div>
+            <div class="col-xs-2 zero-left">
+                <div class="panel-img">
+                    <i class="{{icon}}"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Panel Content -->
+    <div class="panel-body">
+        
+        <!-- PEOPLE -->
+        <div ng-show="showPeople">
+            <ul class="list-group">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HEIGHT
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.height}} kg
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MASS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.mass}} cm
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HAIR COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.hair}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            SKIN COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.skin}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            EYE COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.eye}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            BIRTH YEAR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.birth}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            GENDER
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{profile.gender}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HOMEWORLD
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <a ui-sref="details({id:6,url:hurl})">{{home}}</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            FILMS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemf in itemFilms"><a ui-sref="details({id:2,url:itemf.url})">{{itemf.title}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemFilms.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            SPECIES
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemsp in itemSpecies"><a ui-sref="details({id:5,url:itemsp.url})">{{itemsp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemSpecies.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            VEHICLES
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemv in itemVehicles"><a ui-sref="details({id:4,url:itemv.url})">{{itemv.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemVehicles.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            STARSHIPS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemst in itemStarships"><a ui-sref="details({id:3,url:itemst.url})">{{itemst.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemStarships.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul> <!-- End List Details -->
+        </div> <!-- End People Details -->
+        
+        
+        <!-- FILMS -->
+        <div ng-show="showFilms">
+            <button class="btn btn-xs btn-success" type="button" disabled>
+                Episode <span class="badge">{{films.episode}}</span>
+            </button>
+            
+            <p ng-html="desc" class="description"></p>
+            <div class="list-film">Director: <span>{{films.director}}</span></div>
+            <div class="list-film">Producer: <span>{{films.producer}}</span></div>
+            <div class="list-film">Release Date: <span>{{films.date}}</span></div>
+            
+            <ul class="list-group list-top">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CHARACTERS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemc in itemCharF"><a ui-sref="details({id:1,url:itemc.url})">{{itemc.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemCharF.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PLANETS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemp in itemPlanetsF"><a ui-sref="details({id:6,url:itemp.url})">{{itemp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemPlanetsF.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            STARSHIPS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemst in itemShipF"><a ui-sref="details({id:3,url:itemst.url})">{{itemst.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemShipF.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            VEHICLES
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemv in itemVehiclesF"><a ui-sref="details({id:3,url:itemv.url})">{{itemv.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemVehiclesF.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            SPECIES
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemsp in itemSpeciesF"><a ui-sref="details({id:3,url:itemsp.url})">{{itemsp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemSpeciesF.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- End Films Details -->
+        
+        
+        <!-- STARSHIPS -->
+        <div ng-show="showStarships">
+            <ul class="list-group">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MODEL
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.model}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MANUFACTURER
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.manufacturer}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            COST IN CREDITS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.cost}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            LENGTH
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.length}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MAX ATMOSPHERING SPEED
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.max}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CREW
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.crew}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PASSENGERS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.passengers}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CARGO CAPACITY
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.cargo}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CONSUMABLES
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.consumables}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HYPERDRIVE RATING
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.rating}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MGLT
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.mglt}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            STARSHIP CLASS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{ship.class}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PILOTS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemp in itemPilots"><a ui-sref="details({id:1,url:itemp.url})">{{itemp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemPilots.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            FILMS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemf in itemFilmsS"><a ui-sref="details({id:2,url:itemf.url})">{{itemf.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemFilmsS.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- End Starship Details -->
+        
+        
+        <!-- VEHICLES -->
+        <div ng-show="showVehicles">
+            <ul class="list-group">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MODEL
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.model}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MANUFATURER
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.manufacturer}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            COST IN CREDITS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.cost}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            LENGTH
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.length}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            MAX ATMOSPHERING SPEED
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.max}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CREW
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.crew}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PASSENGERS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.passengers}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CARGO CAPACITY
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.cargo}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CONSUMABLES
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.consumables}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            VEHICLES CLASS
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{vehicle.class}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PILOTS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemp in itemPilotsV"><a ui-sref="details({id:1,url:itemp.url})">{{itemp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemPilotsV.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            FILMS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemf in itemFilmsV"><a ui-sref="details({id:2,url:itemf.url})">{{itemf.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemFilmsV.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- End Vehicles Details -->
+        
+        
+        <!-- SPECIES -->
+        <div ng-show="showSpecies">
+            <ul class="list-group">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CLASSIFICATION
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.classification}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            DESIGNATION
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.designation}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            AVERAGE HEIGHT
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.avg}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            SKIN COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.skin}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HAIR COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.hair}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            EYE COLOR
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.eye}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            AVERAGE LIFESPAN
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.lifespan}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            HOMEWORLD
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <a ui-sref="details({id:6,url:urlh})">{{hhome}}</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            LANGUAGE
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{species.language}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            PEOPLE
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemp in itemPeopleS"><a ui-sref="details({id:1,url:itemp.url})">{{itemp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemPeopleS.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            FILMS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemf in itemFilmsS"><a ui-sref="details({id:2,url:itemf.url})">{{itemf.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemFilmsS.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- End Species Details -->
+        
+        <!-- PLANETS -->
+        <div ng-show="showPlanets">
+            <ul class="list-group">                
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            ROTATION PERIOD
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.rotation}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            ORBITAL PERIOD
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.orbit}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            DIAMETER
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.diameter}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            CLIMATE
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.climate}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            GRAVITY
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.gravity}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            SURFACE WATER
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.surface}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            POPULATION
+                        </div>
+                        <div class="col-xs-8 zero-left grey arial">
+                            : {{planets.population}}
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            RESIDENTS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemp in itemResident"><a ui-sref="details({id:1,url:itemp.url})">{{itemp.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemResident.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            FILMS
+                        </div>
+                        <div class="col-xs-8 zero-left grey">
+                            <!-- Loading element for data loading -->
+                            <div ng-show="loadList" class="loadlist"><i class="loadlist"></i></div> 
+                            <div class="load-text" ng-show="loadList">Loading...</div>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="itemf in itemFilmsP"><a ui-sref="details({id:2,url:itemf.url})">{{itemf.name}}</a></li>
+                            </ul>
+                            <div class="no-item" ng-if="itemFilmsP.length==0">-</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- End Planets Details -->
+        
+    </div> <!-- End Panel Body -->
+</div>
+
+<div class="loading" ng-show="loading"></div>
