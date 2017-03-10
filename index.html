@@ -80,11 +80,15 @@
             <i class="ion-planet menu-icon"></i> Planets
         </menu-item>
     </menu>
-<!--- Google Map API--->
+<!--- Comic Stores-------------->
 <div class="row">
 <div class="col-md-12 text-center">
-<h2 style="margin:8% 0; color:#2D2D2D"> Store</h2>
+<h2 style="margin:8% 0; color:#202020"> Store</h2>
 
+
+
+<!-- Map Sprinter 1-->
+ 
        <div style="width: 900px;  margin:10% 0" >
          <div id="map" style="width: 520px; height: 400px; float: left; "></div> 
          <div id="panel" style="width: 520px; margin:0; padding:6% 0;"></div> 
@@ -96,7 +100,7 @@
          var directionsDisplay = new google.maps.DirectionsRenderer();
     
          var map = new google.maps.Map(document.getElementById('map'), {
-           zoom:4,
+           zoom:5,
            mapTypeId: google.maps.MapTypeId.TERRAIN
          });
         
@@ -104,8 +108,9 @@
          directionsDisplay.setPanel(document.getElementById('panel'));
     
          var request = {
-           origin: 'Pretoria', 
-           destination: 'Sandton',
+           origin: 'Midrand', 
+           
+           destination: 'The Nexus, 21 Harley St, Ferndale, Randburg, 2194, South Africass',
            travelMode: google.maps.DirectionsTravelMode.DRIVING
          };
     
@@ -115,5 +120,7 @@
            }
          });
        </script> 
+
+       
 </body>
 </html>
