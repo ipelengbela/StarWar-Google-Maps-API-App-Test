@@ -1,4 +1,4 @@
-# StarWarsApp-Google-Maps-API-App-Test
+# StarWars-Google-Maps-API-App-Test
 
 Star Wars - Test in Angular JS, Swapi API and Google Maps API    
 
